@@ -14,7 +14,6 @@ public class RedisRepositoryTests {
     void createTest() {
         // 객체를 만들고
         Item item = Item.builder()
-                .id(1L)
                 .name("keyboard")
                 .description("Very Expensive Keyboard")
                 .price(100_000)
@@ -25,7 +24,7 @@ public class RedisRepositoryTests {
 
     @Test
     void redOneTest() {
-        Item item = itemRepository.findById(1L)
+        Item item = itemRepository.findById("")
                 .orElseThrow();
 
         System.out.println(item.getDescription());
@@ -33,7 +32,7 @@ public class RedisRepositoryTests {
 
     @Test
     void updateTest() {
-        Item item = itemRepository.findById(1L)
+        Item item = itemRepository.findById("")
                 .orElseThrow();
         item.setDescription("On Sale!!");
         item = itemRepository.save(item);

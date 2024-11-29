@@ -17,7 +17,7 @@ public class Item implements Serializable {
 
     @Id
     // Id String 으로 하면 UUID 자동으로 배정된다.
-    private Long id;
+    private String id;
     private String name;
     private String description;
     private Integer price;
