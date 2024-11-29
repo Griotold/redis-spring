@@ -1,0 +1,3 @@
+### purchase
+POST localhost:8080/items/1/purchase
+Content-Type: application/json
