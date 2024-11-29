@@ -1,4 +1,4 @@
-package com.study.redis;
+package com.study.redis.practice;
 
 import org.springframework.data.repository.CrudRepository;
 

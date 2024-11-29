@@ -1,5 +1,6 @@
 package com.study.redis;
 
+import com.study.redis.practice.ItemDto;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
