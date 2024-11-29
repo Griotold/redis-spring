@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,5 +25,5 @@ public class Item {
     private Integer price;
 
     @OneToMany(mappedBy = "item", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private final List<ItemOrder> orders = new ArrayList<>();
+    private List<ItemOrder> orders = new ArrayList<>();
 }
