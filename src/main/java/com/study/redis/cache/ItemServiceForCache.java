@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -72,6 +73,13 @@ public class ItemServiceForCache {
         return ItemDtoForCache.from(itemRepository.save(item));
     }
 
+    /**
+     * delete 메서드가 실행되면, readOne, readAll 의 캐시를 지워줘야 한다.
+     * */
+    @Caching(evict = {
+            @CacheEvict(cacheNames = "itemCache", key = "#id"),
+            @CacheEvict(cacheNames = "itemAllCache", allEntries = true)
+    })
     public void delete(Long id) {
         itemRepository.deleteById(id);
     }

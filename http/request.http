@@ -31,3 +31,7 @@ Content-Type: application/json
 {
   "price": 10000
 }
+
+### Cache - delete
+DELETE localhost:8080/items/1
+Content-Type: application/json
