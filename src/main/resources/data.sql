@@ -49,3 +49,19 @@ VALUES
 
 UPDATE item
 SET price = (price / 1000) * 1000;
+
+INSERT INTO item_for_cache (name,description,price)
+VALUES
+    ('mouse','purus,',68707),
+    ('monitor','ullamcorper',11034),
+    ('keyboard','magnis dis parturient',37700),
+    ('speaker','faucibus leo, in lobortis',58281),
+    ('mouse','at pretium',61395),
+    ('monitor','massa rutrum',53854),
+    ('keyboard','vulputate dui, nec',10952),
+    ('speaker','gravida sagittis.',18103),
+    ('mouse','tellus. Nunc lectus',81846),
+    ('monitor','sagittis augue,',23507);
+
+UPDATE item_for_cache
+SET price = (price / 1000) * 1000;
