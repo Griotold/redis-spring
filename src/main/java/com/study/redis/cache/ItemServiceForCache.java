@@ -3,6 +3,7 @@ package com.study.redis.cache;
 import com.study.redis.cache.domain.ItemDtoForCache;
 import com.study.redis.cache.domain.ItemForCache;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -42,7 +43,13 @@ public class ItemServiceForCache {
                 .toList();
     }
 
+    /**
+     * Write-Through 방식
+     * readOne 메서드의 cacheNames와 동일하게 지정해준 것 주목
+     */
+    @CachePut(cacheNames = "itemCache", key = "#result.id")
     public ItemDtoForCache create(ItemDtoForCache dto) {
+        log.info("Create Item: {}", dto);
         return ItemDtoForCache.from(itemRepository.save(ItemForCache.builder()
                 .name(dto.getName())
                 .description(dto.getDescription())

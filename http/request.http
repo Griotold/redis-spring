@@ -13,3 +13,13 @@ Content-Type: application/json
 ### Cache - readAll
 GET localhost:8080/items
 Content-Type: application/json
+
+### Cache - create
+POST localhost:8080/items
+Content-Type: application/json
+
+{
+  "name": "test mouse",
+  "description": "test mouse description",
+  "price": "100000"
+}
