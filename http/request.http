@@ -5,3 +5,7 @@ Content-Type: application/json
 ### Top 10
 GET localhost:8080/items/ranks
 Content-Type: application/json
+
+### Cache - readOne
+GET localhost:8080/items/1
+Content-Type: application/json
