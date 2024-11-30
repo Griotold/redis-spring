@@ -67,3 +67,12 @@
     2. 성공하면 저장된 `ItemOrder`를 사용자에게 응답해준다.
 
 ---
+
+# 실습 3. 주문량이 가장 많은 Top 10 아이템 반환
+
+---
+
+# 실습 4. Spring Boot 프로젝트에 Cache 적용해보기
+- Spring Data Redis의 `RedisCacheManger`를 구성해 본다.
+- `@Cacheable`, `@CachePut`, `@CacheEvict` 어노테이션의 사용법을 알아본다.
+- 데이터 조회 결과를 캐싱해본다.
