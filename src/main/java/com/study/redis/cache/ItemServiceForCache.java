@@ -20,21 +20,6 @@ public class ItemServiceForCache {
         this.itemRepository = itemRepository;
     }
 
-    public ItemDtoForCache create(ItemDtoForCache dto) {
-        return ItemDtoForCache.from(itemRepository.save(ItemForCache.builder()
-                .name(dto.getName())
-                .description(dto.getDescription())
-                .price(dto.getPrice())
-                .build()));
-    }
-
-    public List<ItemDtoForCache> readAll() {
-        return itemRepository.findAll()
-                .stream()
-                .map(ItemDtoForCache::from)
-                .toList();
-    }
-
     /**
      * 이 메서드의 결과는 캐싱이 가능하다.
      * cacheNames: 적용할 캐시 규칙을 지정하기 위한 이름
@@ -47,6 +32,22 @@ public class ItemServiceForCache {
         return itemRepository.findById(id)
                 .map(ItemDtoForCache::from)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+    }
+
+    @Cacheable(cacheNames = "itemAllCache", key = "methodName")
+    public List<ItemDtoForCache> readAll() {
+        return itemRepository.findAll()
+                .stream()
+                .map(ItemDtoForCache::from)
+                .toList();
+    }
+
+    public ItemDtoForCache create(ItemDtoForCache dto) {
+        return ItemDtoForCache.from(itemRepository.save(ItemForCache.builder()
+                .name(dto.getName())
+                .description(dto.getDescription())
+                .price(dto.getPrice())
+                .build()));
     }
 
     public ItemDtoForCache update(Long id, ItemDtoForCache dto) {

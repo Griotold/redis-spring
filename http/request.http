@@ -9,3 +9,7 @@ Content-Type: application/json
 ### Cache - readOne
 GET localhost:8080/items/1
 Content-Type: application/json
+
+### Cache - readAll
+GET localhost:8080/items
+Content-Type: application/json
