@@ -3,6 +3,7 @@ package com.study.redis.cache;
 import com.study.redis.cache.domain.ItemDtoForCache;
 import com.study.redis.cache.domain.ItemForCache;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
@@ -57,6 +58,11 @@ public class ItemServiceForCache {
                 .build()));
     }
 
+    /**
+     * update 메서드가 실행되면, readAll의 캐시를 지워주고 싶다
+     */
+    @CachePut(cacheNames = "itemsCache", key = "args[0]")
+    @CacheEvict(cacheNames = "itemAllCache", allEntries = true)
     public ItemDtoForCache update(Long id, ItemDtoForCache dto) {
         ItemForCache item = itemRepository.findById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
