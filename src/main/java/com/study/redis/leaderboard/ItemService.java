@@ -12,6 +12,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+
 @Slf4j
 @Service
 public class ItemService {
@@ -38,5 +42,12 @@ public class ItemService {
                 .build());
         // 없으면 추가해주고, 있으면 ++
         rankOps.incrementScore("soldRanks", ItemDto.from(item), 1);
+    }
+
+    public List<ItemDto> getMostSold() {
+        // LinkedHashSet 리턴 - 10개 리턴
+        Set<ItemDto> ranks = rankOps.reverseRange("soldRanks", 0, 9);
+        if (ranks == null) return Collections.emptyList();
+        return ranks.stream().toList();
     }
 }

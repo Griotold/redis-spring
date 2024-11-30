@@ -1,3 +1,7 @@
 ### purchase
-POST localhost:8080/items/1/purchase
+POST localhost:8080/items/5/purchase
+Content-Type: application/json
+
+### Top 10
+GET localhost:8080/items/ranks
 Content-Type: application/json

@@ -1,8 +1,11 @@
 package com.study.redis.leaderboard;
 
+import com.study.redis.leaderboard.domain.ItemDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/items")
@@ -14,5 +17,10 @@ public class ItemController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void purchase(@PathVariable("id") Long id) {
         itemService.purchase(id);
+    }
+
+    @GetMapping("/ranks")
+    public List<ItemDto> getRanks() {
+        return itemService.getMostSold();
     }
 }
