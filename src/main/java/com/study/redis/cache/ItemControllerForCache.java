@@ -2,6 +2,8 @@ package com.study.redis.cache;
 
 import com.study.redis.cache.domain.ItemDtoForCache;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,4 +49,12 @@ public class ItemControllerForCache {
         itemService.delete(id);
     }
 
+    @GetMapping("/search")
+    public Page<ItemDtoForCache> search(
+            @RequestParam(name = "q")
+            String query,
+            Pageable pageable
+    ) {
+        return itemService.searchByName(query, pageable);
+    }
 }

@@ -35,3 +35,7 @@ Content-Type: application/json
 ### Cache - delete
 DELETE localhost:8080/items/1
 Content-Type: application/json
+
+### Cache - search
+GET localhost:8080/items/search?q=mo
+Content-Type: application/json
